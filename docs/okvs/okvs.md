@@ -1,4 +1,5 @@
 # OKVS
+
 These files implement the **oblivious key-value store** as described in the paper [Blazing Fast PSI from Improved OKVS and Subfield VOLE](https://eprint.iacr.org/2022/320). They reference the open-source implementation available at https://github.com/Visa-Research/volepsi. There is no need to compile and install third-party libraries. The implementation has been tested on Linux (Ubuntu).
 
 ## Code Structure
@@ -166,11 +167,21 @@ baxos.solve(key_set, value_set, encode_result, &seed, thread_num);
 baxos.decode(key_set, decode_result, encode_result, thread_num);
 ```
 
-## Compile and run
+## utils.h
+
+The operations on the field may be called by other functions, so it is explained here.
 
 ```c++
-$ mkdir build && cd build
-$ cmake ..
-$ make
-$ ./test_okvs 
+inline block gf128_mul(const block x, const block y);
 ```
+
+- `const block x` ： the first element to multiply
+- `const block y` ： the second element to multiply
+- the return value of the function is the result of multiplication over the field $GF(2^{128})$
+
+```c++
+inline block gf128_inv(const block x);
+```
+
+- `const block x` : the element used to find the inverse
+- the return value of the function is the result of the inversion over the field $GF(2^{128})$
