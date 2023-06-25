@@ -1,5 +1,5 @@
-#include "./Baxos.hpp"
-#include "./Paxos.hpp"
+#include "../okvs/Baxos.hpp"
+#include "../okvs/Paxos.hpp"
 #include "../crypto/setup.hpp"
 
 struct OKVSTestcase{
